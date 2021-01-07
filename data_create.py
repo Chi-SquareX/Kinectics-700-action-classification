@@ -53,14 +53,14 @@ print(df.shape)
 df=df.reset_index(drop=True)
 df.index.name='testifying'
 df=df.drop(columns=['split','label'])
-df.head()
+#df.head()
 
 df,v=final_1(df)
 #print(v.shape)
 print(df['highres'].unique())
 print(df['frames'].unique())
 print(df['lowres'].unique())
-df.isnull().sum()
+print(df.isnull().sum())
 
 df=df.dropna()
 df.to_pickle('/content/drive/MyDrive/Project/action recognition/outputs/try_1.pkl')
@@ -124,7 +124,7 @@ path='/content/drive/MyDrive/Projects/action recognition/outputs/try_1.pkl'
 df=pd.read_pickle(path)
 print(df.shape)
 df=df.reset_index(drop=True)
-df.head(3)
+#df.head(3)
 
 vs=final(df)
 
