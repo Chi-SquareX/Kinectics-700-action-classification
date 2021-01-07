@@ -132,11 +132,18 @@ v=vs/vs.max()
 
 def saving(i,v):
   g=v[i*10:(i+1)*10,:,:,:,:]
-  with open('/content/drive/MyDrive/action recognition/outputs/try_2_{}.pkl'.format(i),'wb') as f:
+  with open('/content/drive/MyDrive/action recognition/outputs/try_2_{}.pkl'.format(i+1),'wb') as f:
     pickle.dump(g,f)
   del g
   f.close()
-  print('saved ',i)
+  print('saved ',i+1)
 
-for i in range(len(vs)):
+for i in range(len(vs)//10):
   saving(i,v)
+
+if len(vs)%10!=0:
+   g=v[-(len(vs)%10):,:,:,:,:]
+   with open('/content/drive/MyDrive/action recognition/outputs/try_2_{}.pkl'.format((len(vs)//10)+1),'wb') as f:
+    pickle.dump(g,f)
+   f.close()
+   print('saved ',(len(vs)//10)+1)
